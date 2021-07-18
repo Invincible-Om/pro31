@@ -44,9 +44,7 @@ function setup() {
 
 
   //create particle objects
-  if (frameCount%60===0){
-    particles.push(new Particle(random(width/2-10, width/2-10),10,10));
-  }
+  
   
     
 }
@@ -58,20 +56,21 @@ function draw() {
   textSize(20)
  
   Engine.update(engine);
-  ground.display();
-  
-  //display the plinkos 
-  for (var i = 0; i < plinkos.length; i++) {
-    plinkos[i].display();   
-  }
-   
-  //display the divisions
-  for (var k = 0; k < divisions.length; k++) {
-    divisions[k].display();
+  for (var i = 0; i<divisions.length; i++){
+    divisions[i].display();
   }
 
-  //display the paricles 
-  for (var j = 0; j < particles.length; j++) {
-    divisions[j].display();
+  for (var i = 0; i<plinkos.length; i++){
+    plinkos[i].display();
   }
+
+  if (frameCount% 60 === 0){
+    particles.push(new Particle(random(width/2 -30,width/2 +30),10,10))
+    score++;
+  }
+
+  for (var i = 0; i<particles.length; i++){
+    particles[i].display();
+  }
+  ground.display();
 }
